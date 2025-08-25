@@ -1,6 +1,9 @@
 
 public class Demo04 {
     public static void main(String[] args) {
-        System.out.println(new PaymentService().pay(new Payment("UPI", 499)));
+
+        Payment payment = new Payment(PaymentProviderType.UPI, 499);
+        PaymentService paymentService = new PaymentProcessor().getPaymentService(payment.getProvider());
+        System.out.println(paymentService.pay(payment));
     }
 }
